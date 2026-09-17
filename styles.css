@@ -1,0 +1,13 @@
+body, header, main, footer {
+    margin: 0 auto;
+    padding: 0;
+    width: 100%;
+}
+
+header, #hero, footer {
+    text-align: center;
+}
+
+main {
+    max-width: 1000px;
+}
