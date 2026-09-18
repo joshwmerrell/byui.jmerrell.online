@@ -1,0 +1,3 @@
+// This will redirect the user to the canvas course ....
+
+window.open('', '_self');
