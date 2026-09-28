@@ -1,5 +1,5 @@
 
-export const courseCode = (await (await fetch('../wdd231.json')).json()).code;
+export const courseData = await (await fetch('../wdd231.json')).json();
 
 export const weekData = await (await fetch('./w01.json')).json();
 

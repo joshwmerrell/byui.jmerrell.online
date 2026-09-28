@@ -79,7 +79,7 @@ export function setupCoursePage(courseData, weeksData) {
 
     const body = document.querySelector('body');
 
-    const backNav = `
+    const courseBackNav = `
         <nav>
             <h4><a href="..">&larr; ${backNavLabel}</a></h4>
         </nav>`;
@@ -88,6 +88,7 @@ export function setupCoursePage(courseData, weeksData) {
         <section id="course">
             <h2>${courseCode.toUpperCase()}: ${courseName}</h2>
             <h3>${semesterSeason}, ${semesterYear}</h3>
+            <hr>
             <h3>Weeks - Core Competencies</h3>
             <ul id="weeks-list">
                 ${weeksData.map(week => `<li><a href="${week.name}">Week ${week.number} - ${week.competency}</a></li>`).join(``)}
@@ -97,7 +98,7 @@ export function setupCoursePage(courseData, weeksData) {
     const main = `
         <main>
             ${searchByUrlHint}
-            ${backNav}
+            ${courseBackNav}
             ${courseSection}
         </main>`;
 
@@ -106,12 +107,18 @@ export function setupCoursePage(courseData, weeksData) {
 }
 
 
-export function setupWeekPage(courseCode, weekData, stepsData) {
+export function setupWeekPage(courseData, weekData, stepsData) {
+
+    const courseCode = courseData.code;
+    const courseName = courseData.name;
+    const semesterYear = courseData.semesterYear;
+    const semesterSeason = courseData.semesterSeason;
+    const courseBackNavLabel = courseData.previousIndexCapitlized;
 
     const weekNumber = weekData.number;
     const weekName = weekData.name;
     const weekCompetency = weekData.competency;
-    const backNavLabel = weekData.previousIndexCapitlized;
+    const weekBackNavLabel = weekData.previousIndexCapitlized;
 
     const head = document.querySelector('head');
     const title = document.createElement('title');
@@ -127,13 +134,22 @@ export function setupWeekPage(courseCode, weekData, stepsData) {
 
     const body = document.querySelector('body');
 
-    const backNav = `
+    const courseBackNav = `
         <nav>
-            <h4><a href="..">&larr; ${backNavLabel}</a></h4>
+            <h4><a href="../..">&larr; ${courseBackNavLabel}</a></h4>
+        </nav>`;
+
+    const weekBackNav = `
+        <nav>
+            <h4><a href="..">&larr; ${weekBackNavLabel}</a></h4>
         </nav>`;
 
     const weekSection = `
         <section id="week">
+            <h2>${courseCode.toUpperCase()}: ${courseName}</h2>
+            <h3>${semesterSeason}, ${semesterYear}</h3>
+            <hr>
+            ${weekBackNav}
             <h2>Week ${weekNumber} - ${weekCompetency}</h2>
             ${stepsData.map(step => `
                 <article>
@@ -145,7 +161,7 @@ export function setupWeekPage(courseCode, weekData, stepsData) {
     const main = `
         <main>
             ${searchByUrlHint}
-            ${backNav}
+            ${courseBackNav}
             ${weekSection}
         </main>`;
 
