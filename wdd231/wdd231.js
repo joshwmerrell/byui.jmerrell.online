@@ -1,6 +1,7 @@
 
 const weeks = [
-    'w01'
+    'w01',
+    'w02'
 ];
 
 export const courseData = await (await fetch('./wdd231.json')).json();
