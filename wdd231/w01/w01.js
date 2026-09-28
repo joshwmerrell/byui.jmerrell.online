@@ -5,11 +5,7 @@ export const weekData = await (await fetch('./w01.json')).json();
 
 export const stepsData = [
     {
-        name: "Learning Contract",
-        description: "learning contract description"
-    },
-    {
-        name: "Result",
-        description: "result description"
+        name: "Review",
+        description: "This week was just review of the previous courses' material. Go to another week or course for learning and content."
     }
 ];
